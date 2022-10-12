@@ -1,10 +1,13 @@
-const fs = require('fs)');              //File system library
-const inquirer = require('inquirer');   //Inquirer library
-var http = require('http');             //added reuired to display HTML file
-var addMembersHere = [];                // array storing member information
-const Manager = require('../lib/manager.js'); 
+const fs = require('fs)');                      //File system library
+const inquirer = require('inquirer');           //Inquirer library
+var http = require('http');                     //added reuired to display HTML file
+var addMembersHere = [];                        // array storing member information
+const Employee = require('./lib/employee');     // caps denotes linking class
+const Manager = require('./lib/manager.js');    // caps denotes linking class
+const Engineer = require('./lib/engineer.js');  // caps denotes linking class
+const Intern = require('./lib/intern');         // caps denotes linking class
 
-// MANAGER SECTION
+//------------------- MANAGER SECTION
 var promptManager = inquirer.createPromptModule();
 inquirer
 .promptManager([
@@ -72,7 +75,7 @@ inquirer
     addMemberPromt();//ask we we want to add more members
 });
 
-//ENGINEER SECTION
+//------------------- ENGINEER SECTION
 var promptEngineer = inquirer.createPromptModule();
 inquirer
 .promptEngineer([
@@ -129,13 +132,13 @@ inquirer
         }
     },
 ]).then((data) => {
-    console.log(data);  // Print on console
+    console.log(data);                      // Print on console
     //Add manager's info to the manager object
-    //insert into a collection array
-    //ask we we want to add more members
+    addMembersHere.push(data);              //insert into a collection array - see line 4
+    addMemberPromt();                       //call function to ask we we want to add more members
 });
 
-//INTERN SECTION
+//------------------- INTERN SECTION
 var promtIntern = inquirer.createPromptModule();
 inquirer
 .promptIntern([
@@ -192,13 +195,13 @@ inquirer
         }
     },
 ]).then((data) => {
-    console.log(data);  // Print on console
+    console.log(data);                          // Print on console
     //Add intern's info to the intern object
-    //insert into a collection array
-    addMemberPromt();//call function to ask we we want to add more members
+    addMembersHere.push(data);                  //insert into a collection array - see line 4
+    addMemberPromt();                           //call function to ask we we want to add more members
 });
 
-//ADDING MEMBER SELECTION SECTION
+//------------------- ADDING MEMBER SELECTION SECTION
 var addMemberPromt = inquirer.createPromptModule();
 inquirer
 .addMemberPromt([
@@ -214,12 +217,12 @@ inquirer
     } else if(choices === 'Intern') {
         promptIntern();
     } else {
-        // 1- add teamMembers() to HTML file
+        // 1- add teamMembers() to HTML file and display the file in the browser
         http.createServer(displayHtml).listen(8000);
         // 2- Then open HTML file using the HTTP method
         function displayHtml(request, response) {                                // incoming html info, 
-            response.writeHead(200, {'content-type': 'text/js'});                //  200 ok status on requesting the js file              
-            fs.readFile('./dist/render_html.js', null, fucntion(error, data) {   // reading the js index file 
+            response.writeHead(200, {'content-type': 'text/html'});              //  200 ok status on requesting the js file              
+            fs.readFile('./dist/team.html', null, fucntion(error, data) {        // reading the js index file 
                 if (error) {                                                     // if there's an error trigger
                     response.writeHead(404);                                     // 404 code file not found
                     response.write('Oops! There seems to be a problem..');       // Message if error 404 is triggered         
