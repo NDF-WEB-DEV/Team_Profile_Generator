@@ -2,7 +2,7 @@ const Employee = require('../lib/employee.js');
 
 describe("Employee", () => {
     it("should create an object of the employee class if provided with valid arguments", () => {
-        const employee = new employee("John Smith","101","johnsmith@fakecompany.com");
+        const employee = new Employee("John Smith","101","johnsmith@fakecompany.com");
 
         //test new object uses the correct parameters
         expect(employee.name).toEqual("John Smith");
