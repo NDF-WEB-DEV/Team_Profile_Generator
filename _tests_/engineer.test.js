@@ -9,7 +9,7 @@ describe("Engineer", () => {
         expect(engineer.name).toEqual("Ari Green");
         expect(engineer.id).toEqual("102");
         expect(engineer.email).toEqual("arigreen@fakecompany.com");
-        expect(engineer.githubUser).toEqual("NDF-WEB-DEV");
+        expect(engineer.gitHub).toEqual("NDF-WEB-DEV");
     });
 
     //Test the getName method()

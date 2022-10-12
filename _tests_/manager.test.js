@@ -9,7 +9,7 @@ describe("Manager", () => {
         expect(manager.name).toEqual("Jerry Nice");
         expect(manager.id).toEqual("103");
         expect(manager.email).toEqual("jerrynice@fakecompany.com");
-        expect(manger.officeNumber).toEqual("1017");
+        expect(manager.officeNumber).toEqual("1017");
     });
 
     //Test the getName method()
@@ -34,6 +34,6 @@ describe("Manager", () => {
 
     //Test the getRole method
     it("should return the manager class object when the getRole method is called", () => {
-        expect(manager.getRole()).toEqual('manager');
+        expect(manager.getRole()).toEqual('Manager');
     });
 })

@@ -19,7 +19,7 @@ describe("Intern", () => {
     
         //Test the getId method
         it("should return the id number of the intern class when the getId method is called", () => {
-            expect(intern.getId()).toEqual("101");
+            expect(intern.getId()).toEqual("104");
         });
     
         //Test the getEmail method
