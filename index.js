@@ -6,6 +6,7 @@ const Employee = require('./lib/employee');     // caps denotes linking class
 const Manager = require('./lib/manager.js');    // caps denotes linking class
 const Engineer = require('./lib/engineer.js');  // caps denotes linking class
 const Intern = require('./lib/intern');         // caps denotes linking class
+const generateMarkdown = require('./src/generateMarkdown.js');  //Helper code linked file
 
 //------------------- MANAGER SECTION
 var promptManager = inquirer.createPromptModule();
