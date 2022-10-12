@@ -1,13 +1,8 @@
 const Employee = require('../lib/employee.js');
-const employee = new Employee("John Smith","101","johnsmith@fakecompany.com");
+const employee = new Employee("John Smith","101","johnsmith@fakecompany.com");  
+// Kept getting undefined error, tested with variable in diffrent places seem to work to pass the test as a global variable
 
 describe("Employee", () => {
-    // it("should return employees name as a var", () => {
-    //     const name = "John Smith";
-    //     const employee = new Employee(name);
-    //     expect(employee.name).toEqual("John Smith");
-    // })
-
     it("should create an object of the employee class if provided with valid arguments", () => {
         //test new object uses the correct parameters
         expect(employee.name).toEqual("John Smith");

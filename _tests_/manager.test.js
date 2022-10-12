@@ -1,9 +1,9 @@
 const Employee = require('../lib/employee.js');
 const Manager = require("../lib/manager.js");
+const manager = new Manager("Jerry Nice", "103","jerrynice@fakecompany.com","1017");
 
 describe("Manager", () => {
     it("should create an object of the class manager if provided with valid arguments", () => {
-        const manager = new Manager("Jerry Nice", "103","jerrynice@fakeCompany.com","1017");
 
         //test new object uses the correct parameters
         expect(manager.name).toEqual("Jerry Nice");
