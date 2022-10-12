@@ -1,4 +1,5 @@
-const Engineer = require("../lib/engineer");
+const Employee = require('../lib/employee.js');
+const Engineer = require("../lib/engineer.js");
 
 describe("Engineer", () => {
     it("should create an object of the engineer class if provided with valid arguments", () => {

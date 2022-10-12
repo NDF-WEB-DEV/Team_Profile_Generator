@@ -1,3 +1,4 @@
+const Employee = require('../lib/employee.js');
 const Manager = require("../lib/manager.js");
 
 describe("Manager", () => {

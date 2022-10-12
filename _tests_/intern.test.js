@@ -1,3 +1,4 @@
+const Employee = require('../lib/employee.js');
 const Intern = require('../lib/intern.js');
 
 describe("Intern", () => {

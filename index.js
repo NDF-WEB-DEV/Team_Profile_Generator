@@ -223,17 +223,16 @@ inquirer
         // 2- Then open HTML file using the HTTP method
         function displayHtml(request, response) {                                // incoming html info, 
             response.writeHead(200, {'content-type': 'text/html'});              //  200 ok status on requesting the js file              
-            fs.readFile('./dist/team.html', null, fucntion(error, data) {        // reading the js index file 
+            fs.readFile('./dist/team.html', null, function(error, data){        // reading the js index file 
                 if (error) {                                                     // if there's an error trigger
                     response.writeHead(404);                                     // 404 code file not found
                     response.write('Oops! There seems to be a problem..');       // Message if error 404 is triggered         
                 } else {
-                    response.write(data),                                        //display data from file
-                }
-                response.end();                                                  //ends http response
+                    response.write(data); 
+                    response.end();                                       //display data from file
+                }                                                           //ends http response
         });
         }
     }
-}
-http.createServer(displayHtml).listen(8000);
-init();
+});
+// http.createServer(displayHtml).listen(8000);
