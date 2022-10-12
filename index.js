@@ -1,7 +1,8 @@
 const fs = require('fs)');              //File system library
 const inquirer = require('inquirer');   //Inquirer library
-var http = require('http');           //added reuired to display HTML file
+var http = require('http');             //added reuired to display HTML file
 var addMembersHere = [];                // array storing member information
+const Manager = require('../lib/manager.js'); 
 
 // MANAGER SECTION
 var promptManager = inquirer.createPromptModule();
