@@ -7,6 +7,9 @@ const Manager = require('./lib/manager.js');    // caps denotes linking class
 const Engineer = require('./lib/engineer.js');  // caps denotes linking class
 const Intern = require('./lib/intern');         // caps denotes linking class
 const generateMarkdown = require('./src/generateMarkdown.js');  //Helper code linked file
+const generateManager = require('./src/generateManager');       //HTML Markdown for Manager
+const generateEngineer = require('./src/generateEngineer.js');  //HTML Markdown for Engineer
+const generateIntern = require('./src/generateIntern');         //HTML Markdown for Intern
 
 //------------------- MANAGER SECTION
 var promptManager = inquirer.createPromptModule();
@@ -20,7 +23,7 @@ inquirer
     {
         type: 'input',
         message: 'What is the team managers name?', 
-        name: 'managerName',
+        name: 'name',
         validate: nameVal => {  //returns boolean vals
             if(nameVal != true) { //Check wrong first
                 console.log('Please enter the Managers name to continue.');
@@ -33,7 +36,7 @@ inquirer
     {
         type: 'input',
         message: 'What is the team managers employee ID number?', 
-        name: 'managerId',
+        name: 'id',
         validate: idVal => {  //returns boolean vals
             if(idVal != true) { //check wrong first
                 console.log('Please enter the team managers employee ID number to continue.');
@@ -46,7 +49,7 @@ inquirer
     {
         type: 'input',
         message: 'What is the team managers e-mail address?', 
-        name: 'managerEmail',
+        name: 'email',
         validate: emailVal => {  //returns boolean vals
             if(emailVal != true) { //check wrong first
                 console.log('Please enter the team managers email address to continue.');
@@ -58,11 +61,11 @@ inquirer
     },
     {
         type: 'input',
-        message: 'What is the team managers office telephone number?', 
-        name: 'managerTelNumber',
+        message: 'What is the team managers office number?', 
+        name: 'officeNumber',
         validate: telephoneVal => {  //returns boolean vals
             if(telephoneVal != true) { //check wrong first
-                console.log('Please enter the team managers office telephone number to continue.');
+                console.log('Please enter the team managers office number to continue.');
                 return false; 
             } else {
                 return true;
@@ -83,7 +86,7 @@ inquirer
     {
         type: 'input',
         message: 'What is the engineer name?', 
-        name: 'engineerName',
+        name: 'name',
         validate: nameVal => {  //returns boolean vals
             if(nameVal != true) { //Check wrong first
                 console.log('Please enter the engineer name to continue.');
@@ -96,7 +99,7 @@ inquirer
     {
         type: 'input',
         message: 'What is the engineer employee ID number?', 
-        name: 'engineerId',
+        name: 'id',
         validate: idVal => {  //returns boolean vals
             if(idVal != true) { //check wrong first
                 console.log('Please enter the engineer employee ID number to continue.');
@@ -109,7 +112,7 @@ inquirer
     {
         type: 'input',
         message: 'What is the engineer e-mail address?', 
-        name: 'engineerEmail',
+        name: 'email',
         validate: emailVal => {  //returns boolean vals
             if(emailVal != true) { //check wrong first
                 console.log('Please enter the engineer e-mail address to continue.');
@@ -122,7 +125,7 @@ inquirer
     {
         type: 'input',
         message: 'What is the engineer GitHub username?', 
-        name: 'engineerGithub',
+        name: 'gitHub',
         validate: githubVal => {  //returns boolean vals
             if(githubVal != true) { //check wrong first
                 console.log('Please enter the engineer GitHub username to continue.');
@@ -146,7 +149,7 @@ inquirer
     {
         type: 'input',
         message: 'What is the intern name?', 
-        name: 'internName',
+        name: 'name',
         validate: nameVal => {  //returns boolean vals
             if(nameVal != true) { //Check wrong first
                 console.log('Please enter the intern name to continue.');
@@ -159,7 +162,7 @@ inquirer
     {
         type: 'input',
         message: 'What is the intern employee ID number?', 
-        name: 'internId',
+        name: 'id',
         validate: idVal => {  //returns boolean vals
             if(idVal != true) { //check wrong first
                 console.log('Please enter the intern employee ID number to continue.');
@@ -172,7 +175,7 @@ inquirer
     {
         type: 'input',
         message: 'What is the intern e-mail address?', 
-        name: 'internEmail',
+        name: 'email',
         validate: emailVal => {  //returns boolean vals
             if(emailVal != true) { //check wrong first
                 console.log('Please enter the intern email address to continue.');
@@ -185,7 +188,7 @@ inquirer
     {
         type: 'input',
         message: 'What is the intern school name?', 
-        name: 'schoolName',
+        name: 'school',
         validate: schoolVal => {  //returns boolean vals
             if(schoolVal != true) { //check wrong first
                 console.log('Please enter the intern school name to continue.');
@@ -229,8 +232,8 @@ inquirer
                     response.write('Oops! There seems to be a problem..');       // Message if error 404 is triggered         
                 } else {
                     response.write(data); 
-                    response.end();                                       //display data from file
-                }                                                           //ends http response
+                    response.end();                                              //display data from file
+                }                                                                //ends http response
         });
         }
     }
