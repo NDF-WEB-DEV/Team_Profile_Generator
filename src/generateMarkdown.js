@@ -14,7 +14,7 @@ const managerCard = manager => {
       <li class="list-group-item">Office number: ${manager.officeNumber}</li>
     </ul>
   </div>`;
-  finalTeam.push(managerCardHtml);
+  finalTeam.push(managerCardHtml);  //add card to final team roster
 }
 
 //function to store the Engineer's card HTML code
@@ -31,7 +31,7 @@ const engineerCard = engineer => {
       <li class="list-group-item">GitHub: <a href="https://github.com/${engineer.gitHub} target="_blank" " class="card-link">${engineer.gitHub}</a></li>
     </ul>
   </div>`;
-  finalTeam.push(engineerCardHtml);
+  finalTeam.push(engineerCardHtml);  //add card to final team roster
 }
 // Function to store Interns card HTML code
 const internCard = intern => {
@@ -47,10 +47,10 @@ const internCard = intern => {
       <li class="list-group-item">GitHub: ${intern.school}</li>
     </ul>
   </div>`;
-  finalTeam.push(internCardHtml);
+  finalTeam.push(internCardHtml);  //add card to final team roster
 }
 
-// check with for loop what team members are beign created and if they are requested then add them
+// HELPER FUNCTION: check with for loop what team members are beign created and if they are requested then add them
 for (let i = 0; i < finalTeam.length; i++ ) {
   if(finalTeam[i].getRole() === "Manager") {
     return finalTeam.managerCard(i);

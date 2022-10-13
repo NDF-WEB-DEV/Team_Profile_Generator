@@ -1,15 +1,12 @@
 const fs = require('fs)');                      //File system library
 const inquirer = require('inquirer');           //Inquirer library
-var http = require('http');                     //added reuired to display HTML file
+var http = require('http');                     //added to display HTML file
 var addMembersHere = [];                        // array storing member information
 const Employee = require('./lib/employee');     // caps denotes linking class
 const Manager = require('./lib/manager.js');    // caps denotes linking class
 const Engineer = require('./lib/engineer.js');  // caps denotes linking class
 const Intern = require('./lib/intern');         // caps denotes linking class
 const generateMarkdown = require('./src/generateMarkdown.js');  //Helper code linked file
-const generateManager = require('./src/generateManager');       //HTML Markdown for Manager
-const generateEngineer = require('./src/generateEngineer.js');  //HTML Markdown for Engineer
-const generateIntern = require('./src/generateIntern');         //HTML Markdown for Intern
 
 //------------------- MANAGER SECTION
 var promptManager = inquirer.createPromptModule();
@@ -74,7 +71,8 @@ inquirer
     },
 ]).then((data) => {
     console.log(data);  // Print on console
-    //Add manager's info to the manager object
+    //Add manager's info to the manager object - line 6 + 76
+    const manager = new Manager(data.name, data.title, data.id, data.email, data.officeNumber);  
     addMembersHere.push(data);  //insert into a collection array
     addMemberPromt();//ask we we want to add more members
 });
@@ -137,8 +135,9 @@ inquirer
     },
 ]).then((data) => {
     console.log(data);                      // Print on console
-    //Add manager's info to the manager object
-    addMembersHere.push(data);              //insert into a collection array - see line 4
+    //Add engineer's info to the manager object - line 7 + 140
+    const engineer = new Engineer(data.name, data.title, data.id, data.email, data.gitHub);  
+    addMembersHere.push(engineer);              //insert into a collection array - see line 4
     addMemberPromt();                       //call function to ask we we want to add more members
 });
 
@@ -200,8 +199,9 @@ inquirer
     },
 ]).then((data) => {
     console.log(data);                          // Print on console
-    //Add intern's info to the intern object
-    addMembersHere.push(data);                  //insert into a collection array - see line 4
+    //Add intern's info to the intern object in line 8
+    const intern = new Intern(data.name, data.title, data.id, data.email, data.school);  
+    addMembersHere.push(intern);                  //insert into a collection array - see line 4
     addMemberPromt();                           //call function to ask we we want to add more members
 });
 
@@ -221,21 +221,38 @@ inquirer
     } else if(choices === 'Intern') {
         promptIntern();
     } else {
-        // 1- add teamMembers() to HTML file and display the file in the browser
-        http.createServer(displayHtml).listen(8000);
-        // 2- Then open HTML file using the HTTP method
-        function displayHtml(request, response) {                                // incoming html info, 
-            response.writeHead(200, {'content-type': 'text/html'});              //  200 ok status on requesting the js file              
-            fs.readFile('./dist/team.html', null, function(error, data){        // reading the js index file 
-                if (error) {                                                     // if there's an error trigger
-                    response.writeHead(404);                                     // 404 code file not found
-                    response.write('Oops! There seems to be a problem..');       // Message if error 404 is triggered         
-                } else {
-                    response.write(data); 
-                    response.end();                                              //display data from file
-                }                                                                //ends http response
-        });
-        }
-    }
+        console.log(data);  //print the data on console
+        //write the file using the fs.write file function 
+        //First parameter is the path and name of the file to be produce
+        //The second parameter connects the ultility file to the data produced by answers
+        fs.writeFile('./dist/team.html', generateMarkdown(data), err =>  
+        // Error catch : if no errors then message file is beign produced.  
+        err ? console.error(err) : console.log("Generating Team Members HTML file...")
+    )}
 });
+
+//not working!!
+// .then((data) => {
+//     if (choices === 'Engineer') {
+//         promptEngineer();
+//     } else if(choices === 'Intern') {
+//         promptIntern();
+//     } else {
+//         // 1- add teamMembers() to HTML file and display the file in the browser
+//         http.createServer(displayHtml).listen(8000);
+//         // 2- Then open HTML file using the HTTP method
+//         function displayHtml(request, response) {                                // incoming html info, 
+//             response.writeHead(200, {'content-type': 'text/html'});              //  200 ok status on requesting the js file              
+//             fs.readFile('./dist/team.html', null, function(error, data){        // reading the js index file 
+//                 if (error) {                                                     // if there's an error trigger
+//                     response.writeHead(404);                                     // 404 code file not found
+//                     response.write('Oops! There seems to be a problem..');       // Message if error 404 is triggered         
+//                 } else {
+//                     response.write(data); 
+//                     response.end();                                              //display data from file
+//                 }                                                                //ends http response
+//         });
+//         }
+//     }
+// });
 // http.createServer(displayHtml).listen(8000);
