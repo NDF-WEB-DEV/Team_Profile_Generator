@@ -2,6 +2,9 @@
 ###  
 ### Description
 > #### This project creates a team member profile while interacting with the console  to then generate a n HTML site with information on the team.
+
+### Submission Video
+[Submission Video Link](https://drive.google.com/file/d/1OuW0zaE_FWcx6kzUsJ9Kzj1hFlGg3cIH/view)
 ## Table of Contents
 - [Project Name](#project_name)
 - [How to install it](#installation)
