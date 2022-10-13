@@ -21,7 +21,7 @@
 ### Usage
 > The repo is not working due to an Error: Cannot find module fs node js. If it was working it would generate a team html site to review team member's cards with information like name, title, id, email, office number, GitHub account, and school name. Thi generator can create a Manager, an Engineer and a Interns profile.
 ### Technology
-> JavaScript, Node JS, HTML, Bootstrap, Jest, fs, 
+> JavaScript, Node JS, HTML, Bootstrap, Jest Pkg, fs Pkg, inquirer Pkg
 ### Questions
 Contact me with questions via [GitHub](https://github.com/NDF-WEB-DEV) or send an email to: nordleendefrias@gmail.com
 ### Report Issues
