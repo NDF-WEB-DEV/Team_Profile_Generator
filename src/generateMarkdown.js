@@ -49,7 +49,21 @@ const internCard = intern => {
   </div>`;
   finalTeam.push(internCardHtml);
 }
-// This function will return the entire html file and will include the indiviadual team functions
+
+// check with for loop what team members are beign created and if they are requested then add them
+for (let i = 0; i < finalTeam.length; i++ ) {
+  if(finalTeam[i].getRole() === "Manager") {
+    return finalTeam.managerCard(i);
+  }
+  if (finalTeam[i],getRole() === "Engineer") {
+    return finalTeam.engineerCard(i);
+  }
+  if(finalTeam[i].getRole === "Intern") {
+    return finalTeam.intern(i);
+  }
+}
+
+// This function will return the entire html file and will include the individual team functions
 function generateMarkdown(data) {
     return `
     <!DOCTYPE html>

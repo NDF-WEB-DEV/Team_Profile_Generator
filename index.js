@@ -63,8 +63,8 @@ inquirer
         type: 'input',
         message: 'What is the team managers office number?', 
         name: 'officeNumber',
-        validate: telephoneVal => {  //returns boolean vals
-            if(telephoneVal != true) { //check wrong first
+        validate: officeNumVal => {  //returns boolean vals
+            if(officeNumVal != true) { //check wrong first
                 console.log('Please enter the team managers office number to continue.');
                 return false; 
             } else {
