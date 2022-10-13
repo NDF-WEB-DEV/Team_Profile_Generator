@@ -18,7 +18,7 @@
 ### Project Name
 > Team Profile Generator
 ### Installation
-> npm i, npm install --save-dev jest
+> npm i, npm install --save-dev jest, npm i inquirer@8.2.4
 ### Tests
 > npm run test
 ### Usage
