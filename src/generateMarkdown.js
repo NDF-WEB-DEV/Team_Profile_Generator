@@ -5,16 +5,17 @@ const managerCard = manager => {
     let managerCardHtml = `
     <div class="card px-4" style="width: 350px; margin: 20px;">
     <div class="card-body">
-      <h5 class="card-title">${manager.name}</h5>
-      <p class="card-text"><i class="bi bi-cup-hot-fill"></i> ${manager.title}</p>
+      <h5 class="card-title">${data.manager.name}</h5>
+      <p class="card-text"><i class="bi bi-cup-hot-fill"></i> ${data.manager.title}</p>
     </div>
     <ul class="list-group list-group-flush">
-      <li class="list-group-item">ID: ${manager.id}</li>
-      <li class="list-group-item">Email:<a href="mailto:${manager.email}" class="card-link">${manager.email}</a></li>
-      <li class="list-group-item">Office number: ${manager.officeNumber}</li>
+      <li class="list-group-item">ID: ${data.manager.id}</li>
+      <li class="list-group-item">Email:<a href="mailto:${data.manager.email}" class="card-link">${data.manager.email}</a></li>
+      <li class="list-group-item">Office number: ${data.manager.officeNumber}</li>
     </ul>
   </div>`;
-  finalTeam.push(managerCardHtml);  //add card to final team roster
+  finalTeam.push(managerCardHtml) = managerCard;  //add card to final team roster
+  return managerCard;
 }
 
 //function to store the Engineer's card HTML code
@@ -22,43 +23,45 @@ const engineerCard = engineer => {
     let engineerCardHtml = `
     <div class="card px-4" style="width: 350px; margin: 20px;">
     <div class="card-body">
-      <h5 class="card-title">${engineer.name}</h5>
-      <p class="card-text"><i class="bi bi-eyeglasses"></i> ${engineer.title}</p>
+      <h5 class="card-title">${data.engineer.name}</h5>
+      <p class="card-text"><i class="bi bi-eyeglasses"></i> ${data.engineer.title}</p>
     </div>
     <ul class="list-group list-group-flush">
-      <li class="list-group-item">ID: ${engineer.id}</li>
-      <li class="list-group-item">Email: <a href="mailto:${engineer.email}" class="card-link">${engineer.email}</a></li>
-      <li class="list-group-item">GitHub: <a href="https://github.com/${engineer.gitHub} target="_blank" " class="card-link">${engineer.gitHub}</a></li>
+      <li class="list-group-item">ID: ${data.engineer.id}</li>
+      <li class="list-group-item">Email: <a href="mailto:${data.engineer.email}" class="card-link">${data.engineer.email}</a></li>
+      <li class="list-group-item">GitHub: <a href="https://github.com/${data.engineer.gitHub} target="_blank" " class="card-link">${data.engineer.gitHub}</a></li>
     </ul>
   </div>`;
-  finalTeam.push(engineerCardHtml);  //add card to final team roster
+  finalTeam.push(engineerCardHtml) = engineerCard;  //add card to final team roster
+  return engineerCard;
 }
 // Function to store Interns card HTML code
 const internCard = intern => {
     let internCardHtml = `
     <div class="card px-4" style="width: 350px; margin: 20px;">
     <div class="card-body">
-      <h5 class="card-title">${intern.name}</h5>
-      <p class="card-text"><i class="bi bi-mortarboard-fill"></i> ${intern.title}</p>
+      <h5 class="card-title">${data.intern.name}</h5>
+      <p class="card-text"><i class="bi bi-mortarboard-fill"></i> ${data.intern.title}</p>
     </div>
     <ul class="list-group list-group-flush">
-      <li class="list-group-item">ID: ${intern.id}</li>
-      <li class="list-group-item">Email: <a href="mailto:${intern.email}" class="card-link">${intern.email}</a></li>
-      <li class="list-group-item">GitHub: ${intern.school}</li>
+      <li class="list-group-item">ID: ${data.intern.id}</li>
+      <li class="list-group-item">Email: <a href="mailto:${data.intern.email}" class="card-link">${data.intern.email}</a></li>
+      <li class="list-group-item">GitHub: ${data.intern.school}</li>
     </ul>
   </div>`;
-  finalTeam.push(internCardHtml);  //add card to final team roster
+  finalTeam.push(internCardHtml) = internCard;
+  return internCard;  //add card to final team roster
 }
 
 // HELPER FUNCTION: check with for loop what team members are beign created and if they are requested then add them
 for (let i = 0; i < finalTeam.length; i++ ) {
-  if(finalTeam[i].getRole() === "Manager") {
+  if(finalTeam[i].getRole() == "Manager") {
     return finalTeam.managerCard(i);
   }
-  if (finalTeam[i],getRole() === "Engineer") {
+  if (finalTeam[i],getRole() == "Engineer") {
     return finalTeam.engineerCard(i);
   }
-  if(finalTeam[i].getRole === "Intern") {
+  if(finalTeam[i].getRole == "Intern") {
     return finalTeam.intern(i);
   }
 }
@@ -79,7 +82,7 @@ function generateMarkdown(data) {
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js" integrity="sha256-eTyxS0rkjpLEo16uXTS0uVCS4815lc40K2iVpWDvdSY=" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" type="text/javascript" crossorigin="anonymous"></script>
-        <link rel="stylesheet" type="text/css" href="./assets/css/reset.css" />
+        <link rel="stylesheet" type="text/css" href="style.css" />
     </head>
     <body>
         <header>
@@ -89,7 +92,10 @@ function generateMarkdown(data) {
                 </div>
               </div>
         </header>
-        <main><section>${data.finalTeam}</section>
+        <main>
+              <section>${managerCard(data.finalTeam)}</section>
+              <section>${engineerCard(data.finalTeam)}</section>
+              <section>${internCard(data.finalTeam)}</section>
         </main>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
