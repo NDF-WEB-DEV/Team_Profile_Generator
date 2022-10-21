@@ -1,56 +1,57 @@
-const finalTeam = [];       // Array to store html content
+// Array to store html content
+const finalTeam = [];       
 
 // function to store Manager's card HTML code
-const managerCard = manager => {
+function managerCard(manager) {
     let managerCardHtml = `
     <div class="card px-4" style="width: 350px; margin: 20px;">
     <div class="card-body">
-      <h5 class="card-title">${data.manager.name}</h5>
-      <p class="card-text"><i class="bi bi-cup-hot-fill"></i> ${data.manager.title}</p>
+      <h5 class="card-title">${manager.getName()}</h5>
+      <p class="card-text"><i class="bi bi-cup-hot-fill"></i>Manager</p>
     </div>
     <ul class="list-group list-group-flush">
-      <li class="list-group-item">ID: ${data.manager.id}</li>
-      <li class="list-group-item">Email:<a href="mailto:${data.manager.email}" class="card-link">${data.manager.email}</a></li>
-      <li class="list-group-item">Office number: ${data.manager.officeNumber}</li>
+      <li class="list-group-item">ID: ${manager.getId()}</li>
+      <li class="list-group-item">Email:<a href="mailto:${manager.getEmail()}" class="card-link">${manager.getEmail()}</a></li>
+      <li class="list-group-item">Office number: ${manager.getOfficeNumber()}</li>
     </ul>
   </div>`;
-  finalTeam.push(managerCardHtml) = managerCard;  //add card to final team roster
-  return managerCard;
+  finalTeam.push(managerCardHtml);  //add card to final team roster
+  return managerCardHtml;
 }
 
 //function to store the Engineer's card HTML code
-const engineerCard = engineer => {
+function engineerCard(engineer) {
     let engineerCardHtml = `
     <div class="card px-4" style="width: 350px; margin: 20px;">
     <div class="card-body">
-      <h5 class="card-title">${data.engineer.name}</h5>
-      <p class="card-text"><i class="bi bi-eyeglasses"></i> ${data.engineer.title}</p>
+      <h5 class="card-title">${engineer.getName()}</h5>
+      <p class="card-text"><i class="bi bi-eyeglasses"></i> ${engineer.getRole()}</p>
     </div>
     <ul class="list-group list-group-flush">
-      <li class="list-group-item">ID: ${data.engineer.id}</li>
-      <li class="list-group-item">Email: <a href="mailto:${data.engineer.email}" class="card-link">${data.engineer.email}</a></li>
-      <li class="list-group-item">GitHub: <a href="https://github.com/${data.engineer.gitHub} target="_blank" " class="card-link">${data.engineer.gitHub}</a></li>
+      <li class="list-group-item">ID: ${engineer.getId()}</li>
+      <li class="list-group-item">Email: <a href="mailto:${engineer.getEmail()}" class="card-link">${engineer.getEmail()}</a></li>
+      <li class="list-group-item">GitHub: <a href="https://github.com/${engineer.getGithub()} target="_blank" " class="card-link">${engineer.getGithub()}</a></li>
     </ul>
   </div>`;
-  finalTeam.push(engineerCardHtml) = engineerCard;  //add card to final team roster
-  return engineerCard;
+  finalTeam.push(engineerCardHtml);  //add card to final team roster
+  return engineerCardHtml;
 }
 // Function to store Interns card HTML code
-const internCard = intern => {
+function internCard (intern) {
     let internCardHtml = `
     <div class="card px-4" style="width: 350px; margin: 20px;">
     <div class="card-body">
-      <h5 class="card-title">${data.intern.name}</h5>
-      <p class="card-text"><i class="bi bi-mortarboard-fill"></i> ${data.intern.title}</p>
+      <h5 class="card-title">${intern.getName()}</h5>
+      <p class="card-text"><i class="bi bi-mortarboard-fill"></i> ${intern.getRole()}</p>
     </div>
     <ul class="list-group list-group-flush">
-      <li class="list-group-item">ID: ${data.intern.id}</li>
-      <li class="list-group-item">Email: <a href="mailto:${data.intern.email}" class="card-link">${data.intern.email}</a></li>
-      <li class="list-group-item">GitHub: ${data.intern.school}</li>
+      <li class="list-group-item">ID: ${intern.getId()}</li>
+      <li class="list-group-item">Email: <a href="mailto:${intern.getEmail()}" class="card-link">${intern.getEmail()}</a></li>
+      <li class="list-group-item">GitHub: ${intern.getSchool()}</li>
     </ul>
   </div>`;
-  finalTeam.push(internCardHtml) = internCard;
-  return internCard;  //add card to final team roster
+  finalTeam.push(internCardHtml);
+  return internCardHtml;  //add card to final team roster
 }
 
 // HELPER FUNCTION: check with for loop what team members are beign created and if they are requested then add them
@@ -59,12 +60,17 @@ for (let i = 0; i < finalTeam.length; i++ ) {
     return finalTeam.managerCard(i);
   }
   if (finalTeam[i],getRole() == "Engineer") {
-    return finalTeam.engineerCard(i);
+    return finalTeam.engineerCard(i)
+    // .join("")
   }
-  if(finalTeam[i].getRole == "Intern") {
-    return finalTeam.intern(i);
+  if(finalTeam[i].getRole() == "Intern") {
+    return finalTeam.internCard(i)
+    // .join("")
   }
-}
+  return finalTeam.join("")
+};
+
+
 
 // This function will return the entire html file and will include the individual team functions
 function generateMarkdown(data) {
@@ -93,9 +99,9 @@ function generateMarkdown(data) {
               </div>
         </header>
         <main>
-              <section>${managerCard(data.finalTeam)}</section>
-              <section>${engineerCard(data.finalTeam)}</section>
-              <section>${internCard(data.finalTeam)}</section>
+          <section>${managerCard(data.manager)}</section>
+          <section>${engineerCard(data.engineer)}</section>
+          <section>${internCard(data.intern)}</section>
         </main>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
@@ -105,6 +111,6 @@ function generateMarkdown(data) {
     </body>
 </html>
     `;
-}
+};
 
 module.exports = generateMarkdown;
