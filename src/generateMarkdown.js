@@ -15,7 +15,7 @@ function managerCard(manager) {
       <li class="list-group-item">Office number: ${manager.getOfficeNumber()}</li>
     </ul>
   </div>`;
-  finalTeam.push(managerCardHtml);  //add card to final team roster
+  // finalTeam.push(managerCardHtml);  //add card to final team roster
   return managerCardHtml;
 }
 
@@ -33,7 +33,7 @@ function engineerCard(engineer) {
       <li class="list-group-item">GitHub: <a href="https://github.com/${engineer.getGithub()} target="_blank" " class="card-link">${engineer.getGithub()}</a></li>
     </ul>
   </div>`;
-  finalTeam.push(engineerCardHtml);  //add card to final team roster
+  // finalTeam.push(engineerCardHtml);  //add card to final team roster
   return engineerCardHtml;
 }
 // Function to store Interns card HTML code
@@ -50,29 +50,28 @@ function internCard (intern) {
       <li class="list-group-item">GitHub: ${intern.getSchool()}</li>
     </ul>
   </div>`;
-  finalTeam.push(internCardHtml);
+  // finalTeam.push(internCardHtml);
   return internCardHtml;  //add card to final team roster
 }
-
-// HELPER FUNCTION: check with for loop what team members are beign created and if they are requested then add them
-for (let i = 0; i < finalTeam.length; i++ ) {
-  if(finalTeam[i].getRole() == "Manager") {
-    return finalTeam.managerCard(i);
+// This function grabs the output from 3 team member functions and compiles it into the html array  
+ function generateTeam (data) {
+  let html = [];  // Array to store html content
+    html.push(data  //inserting into array
+      .filter(employee => employee.getRole() === "Manager")     // filter every role for manager
+      .map(manager => managerCard(manager)).join("")            // creates card for every manager object
+    );
+    html.push(data
+      .filter(employee => employee.getRole() === "Engineer")    // filter every role for Engineer
+      .map(engineer => engineerCard(engineer)).join("")         // creates card for every Engineer object
+    );
+    html.push(data
+      .filter(employee => employee.getRole() === "Intern")      // filter every role for intern
+      .map(intern => internCard(intern)).join("")               // creates card for every intern object
+    );
+      return html.join(""); // adding final elements of the array as a string
   }
-  if (finalTeam[i],getRole() == "Engineer") {
-    return finalTeam.engineerCard(i)
-    // .join("")
-  }
-  if(finalTeam[i].getRole() == "Intern") {
-    return finalTeam.internCard(i)
-    // .join("")
-  }
-  return finalTeam.join("")
-};
 
-
-
-// This function will return the entire html file and will include the individual team functions
+// This function will return the entire html file and will include the individual team functions from line 71
 function generateMarkdown(data) {
     return `
     <!DOCTYPE html>
@@ -99,9 +98,7 @@ function generateMarkdown(data) {
               </div>
         </header>
         <main>
-          <section>${managerCard(data.manager)}</section>
-          <section>${engineerCard(data.engineer)}</section>
-          <section>${internCard(data.intern)}</section>
+            ${generateTeam(data)}
         </main>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
