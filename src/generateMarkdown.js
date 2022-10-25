@@ -4,14 +4,14 @@ const finalTeam = [];
 // function to store Manager's card HTML code
 function managerCard(manager) {
     let managerCardHtml = `
-    <div class="card px-4" style="width: 350px; margin: 20px;">
+    <div class="card mb-3">
     <div class="card-body">
       <h5 class="card-title">${manager.getName()}</h5>
-      <p class="card-text"><i class="bi bi-cup-hot-fill"></i>Manager</p>
+      <p class="card-text"><i class="bi bi-cup-hot-fill"></i> Manager</p>
     </div>
     <ul class="list-group list-group-flush">
       <li class="list-group-item">ID: ${manager.getId()}</li>
-      <li class="list-group-item">Email:<a href="mailto:${manager.getEmail()}" class="card-link">${manager.getEmail()}</a></li>
+      <li class="list-group-item">Email: <a href="mailto:${manager.getEmail()}" class="card-link">${manager.getEmail()}</a></li>
       <li class="list-group-item">Office number: ${manager.getOfficeNumber()}</li>
     </ul>
   </div>`;
@@ -22,7 +22,7 @@ function managerCard(manager) {
 //function to store the Engineer's card HTML code
 function engineerCard(engineer) {
     let engineerCardHtml = `
-    <div class="card px-4" style="width: 350px; margin: 20px;">
+    <div class="card mb-3">
     <div class="card-body">
       <h5 class="card-title">${engineer.getName()}</h5>
       <p class="card-text"><i class="bi bi-eyeglasses"></i> ${engineer.getRole()}</p>
@@ -30,7 +30,7 @@ function engineerCard(engineer) {
     <ul class="list-group list-group-flush">
       <li class="list-group-item">ID: ${engineer.getId()}</li>
       <li class="list-group-item">Email: <a href="mailto:${engineer.getEmail()}" class="card-link">${engineer.getEmail()}</a></li>
-      <li class="list-group-item">GitHub: <a href="https://github.com/${engineer.getGithub()} target="_blank" " class="card-link">${engineer.getGithub()}</a></li>
+      <li class="list-group-item">GitHub: <a href="https://github.com/${engineer.getGithub()}" target="_blank" class="card-link">${engineer.getGithub()}</a></li>
     </ul>
   </div>`;
   // finalTeam.push(engineerCardHtml);  //add card to final team roster
@@ -39,7 +39,7 @@ function engineerCard(engineer) {
 // Function to store Interns card HTML code
 function internCard (intern) {
     let internCardHtml = `
-    <div class="card px-4" style="width: 350px; margin: 20px;">
+    <div class="card mb-3">
     <div class="card-body">
       <h5 class="card-title">${intern.getName()}</h5>
       <p class="card-text"><i class="bi bi-mortarboard-fill"></i> ${intern.getRole()}</p>
@@ -88,6 +88,8 @@ function generateMarkdown(data) {
         <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js" integrity="sha256-eTyxS0rkjpLEo16uXTS0uVCS4815lc40K2iVpWDvdSY=" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" type="text/javascript" crossorigin="anonymous"></script>
         <link rel="stylesheet" type="text/css" href="style.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     </head>
     <body>
         <header>
@@ -98,7 +100,11 @@ function generateMarkdown(data) {
               </div>
         </header>
         <main>
+          <div class="container">
+            <div class="row">
             ${generateTeam(data)}
+            </div>
+          </div>
         </main>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>

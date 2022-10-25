@@ -137,7 +137,7 @@ function init () {
       }
     ]).then(data => {
       console.log(data); // Print on console
-      const intern = new Intern(data.internName, data.internId, data.internEmail, data.InternSchool);  //intern object
+      const intern = new Intern(data.internName, data.internId, data.internEmail, data.internSchool);  //intern object
       addMembersHere.push(intern); // insert into a collection array - see line 4
       console.log(addMembersHere);
       addMembers(); // From interns - call function to ask we we want to add more members
