@@ -4,7 +4,7 @@
 > #### This project creates a team member profile while interacting with the console  to then generate a n HTML site with information on the team.
 
 ### Submission Video
-[Submission Video Link](https://drive.google.com/file/d/1OuW0zaE_FWcx6kzUsJ9Kzj1hFlGg3cIH/view)
+[2nd - Submission Video Link](https://drive.google.com/file/d/1ZtsjKC22D1Kub1rp6axlrEqYp9F9ZexH/view?usp=sharing)
 ## Table of Contents
 - [Project Name](#project_name)
 - [How to install it](#installation)
@@ -22,9 +22,9 @@
 ### Tests
 > npm run test
 ### Usage
-> The repo is not working due to an Error: Cannot find module fs node js. If it was working it would generate a team html site to review team member's cards with information like name, title, id, email, office number, GitHub account, and school name. Thi generator can create a Manager, an Engineer and a Interns profile.
+> You can use the team profile generator to input team members information and output to an html file where they are displayed as bootstrap cards.
 ### Technology
-> JavaScript, Node JS, HTML, Bootstrap, Jest Pkg, fs Pkg, inquirer Pkg
+> JavaScript, Node JS, HTML, Bootstrap, Bootstrap Icons, Jest Pkg, fs Pkg, inquirer Pkg
 ### Questions
 Contact me with questions via [GitHub](https://github.com/NDF-WEB-DEV) or send an email to: nordleendefrias@gmail.com
 ### Report Issues
